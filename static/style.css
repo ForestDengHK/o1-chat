@@ -9,17 +9,17 @@
     --bg-primary: #ffffff;
     --bg-secondary: #f7f7f8;
     --bg-tertiary: #ececf1;
-    --text-primary: #000000;
-    --text-secondary: #343541;
-    --text-tertiary: #40414f;
-    --border-color: #e5e5e5;
+    --text-primary: #2d2d2d;
+    --text-secondary: #4a4a4a;
+    --text-tertiary: #6e6e80;
+    --border-color: #dedede;
     --accent-color: #10a37f;
     --accent-hover: #0d8c6d;
     --code-bg: #f6f8fa;
     --message-bg: #ffffff;
     --message-hover: #f7f7f8;
     --assistant-bg: #f7f7f8;
-    --sidebar-bg: #f7f7f8;
+    --sidebar-bg: #ffffff;
     --input-bg: #ffffff;
     --scrollbar-thumb: #d9d9d9;
     --scrollbar-hover: #bfbfbf;
@@ -213,6 +213,35 @@ body {
     background-color: var(--assistant-bg);
 }
 
+[data-theme="light"] .assistant-message {
+    background-color: #f7f7f8;
+}
+
+[data-theme="light"] .message-content {
+    color: var(--text-primary);
+}
+
+[data-theme="light"] .system-message {
+    background-color: #f0f0f0;
+}
+
+[data-theme="light"] .system-message .message-content {
+    color: #666666;
+}
+
+[data-theme="light"] .thinking {
+    background-color: #f7f7f8;
+    color: #666666;
+}
+
+[data-theme="light"] .copy-button {
+    color: #666666;
+}
+
+[data-theme="light"] .message-header {
+    color: #666666;
+}
+
 .message-header {
     display: flex;
     align-items: center;
@@ -382,10 +411,9 @@ body {
     flex: 1;
     min-height: 40px;
     max-height: 200px;
-    padding: 0.75rem;
-    background-color: var(--input-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
+    padding: 0.5rem;
+    background-color: transparent;
+    border: none;
     color: var(--text-primary);
     font-family: inherit;
     font-size: 1rem;
@@ -394,7 +422,6 @@ body {
 
 .chat-input-container textarea:focus {
     outline: none;
-    border-color: var(--accent-color);
 }
 
 #send-button {
@@ -607,4 +634,127 @@ body {
 
 [data-theme="dark"] .theme-switch .moon-icon {
     display: none;
+}
+
+.chat-input-wrapper {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    width: 100%;
+}
+
+.input-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex: 1;
+    background-color: var(--input-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 0.75rem;
+    padding: 0.75rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input-options {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.toggle-search {
+    background: transparent;
+    border: none;
+    padding: 0.4rem;
+    cursor: pointer;
+    color: var(--text-primary);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.toggle-search:hover {
+    background-color: var(--message-hover);
+}
+
+.toggle-search.active {
+    color: var(--accent-color);
+}
+
+.toggle-search svg {
+    width: 16px;
+    height: 16px;
+    stroke: currentColor;
+    stroke-width: 2;
+}
+
+.chat-input-container textarea {
+    flex: 1;
+    min-height: 40px;
+    max-height: 200px;
+    padding: 0.5rem;
+    background-color: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 1rem;
+    resize: none;
+}
+
+.chat-input-container textarea:focus {
+    outline: none;
+}
+
+.input-controls:focus-within {
+    border-color: var(--accent-color);
+}
+
+[data-theme="light"] .input-controls {
+    background-color: #ffffff;
+    border: 1px solid #e5e5e5;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.05);
+}
+
+[data-theme="light"] .toggle-search {
+    color: #8e8ea0;
+}
+
+[data-theme="light"] .toggle-search:hover {
+    background-color: rgba(0,0,0,0.05);
+}
+
+[data-theme="light"] .toggle-search.active {
+    color: #10a37f;
+}
+
+[data-theme="light"] .chat-input-container {
+    background-color: #ffffff;
+    border-top: 1px solid #e5e5e5;
+}
+
+[data-theme="light"] .chat-input-container textarea {
+    color: #353740;
+    background-color: transparent;
+}
+
+[data-theme="light"] .chat-input-container textarea::placeholder {
+    color: #8e8ea0;
+}
+
+.input-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex: 1;
+    background-color: var(--input-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 0.75rem;
+    padding: 0.75rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input-controls:focus-within {
+    border-color: #10a37f;
+    box-shadow: 0 0 0 1px rgba(16,163,127,0.5);
 } 

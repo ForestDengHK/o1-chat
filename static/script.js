@@ -6,11 +6,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const newChatButton = document.getElementById('new-chat-button');
     const themeSwitch = document.getElementById('theme-switch');
     const codeTheme = document.getElementById('code-theme');
+    const toggleSearch = document.getElementById('toggle-search');
 
     let messages = [];
     let isSummarized = false;
     let isProcessing = false;
     let currentConversationId = null;
+    let isWebSearchEnabled = false;
 
     // Theme handling
     const currentTheme = localStorage.getItem('theme') || 'dark';
@@ -305,6 +307,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Add toggle search handler
+    toggleSearch.addEventListener('click', () => {
+        isWebSearchEnabled = !isWebSearchEnabled;
+        toggleSearch.classList.toggle('active', isWebSearchEnabled);
+        userInput.placeholder = isWebSearchEnabled ? 
+            "Search the web and chat..." : 
+            "Type your message here...";
+    });
+
     async function sendMessage() {
         const content = userInput.value.trim();
         if (!content || isProcessing) return;
@@ -332,7 +343,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 },
                 body: JSON.stringify({
                     messages: messages,
-                    conversation_id: currentConversationId
+                    conversation_id: currentConversationId,
+                    web_search: isWebSearchEnabled
                 }),
             });
 
